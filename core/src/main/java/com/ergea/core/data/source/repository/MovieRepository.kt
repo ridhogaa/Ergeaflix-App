@@ -1,6 +1,5 @@
 package com.ergea.core.data.source.repository
 
-import android.provider.ContactsContract.Data
 import com.ergea.core.data.source.NetworkBoundResource
 import com.ergea.core.data.source.Resource
 import com.ergea.core.data.source.local.LocalDataSource

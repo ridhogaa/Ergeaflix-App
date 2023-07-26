@@ -1,9 +1,5 @@
 package com.ergea.core.data.source.local
 
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
 import com.ergea.core.data.source.local.entity.MovieEntity
 import com.ergea.core.data.source.local.room.MovieDao
 import kotlinx.coroutines.flow.Flow

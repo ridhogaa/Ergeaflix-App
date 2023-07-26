@@ -1,24 +1,19 @@
 package com.ergea.favorite.ui.favorite
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.ergea.core.ui.MovieAdapter
 import com.ergea.ergeaflixapp.di.FavoriteModule
 import com.ergea.ergeaflixapp.views.detail.DetailFragment
-import com.ergea.favorite.R
 import com.ergea.favorite.databinding.FragmentFavoriteBinding
 import com.ergea.favorite.di.DaggerFavoriteComponent
-import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.EntryPointAccessors
 import javax.inject.Inject
 

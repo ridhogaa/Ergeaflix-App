@@ -9,7 +9,6 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import com.bumptech.glide.Glide
 import com.ergea.core.domain.model.Movie
-import com.ergea.core.ui.MovieAdapter
 import com.ergea.ergeaflixapp.R
 import com.ergea.ergeaflixapp.databinding.FragmentDetailBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -64,14 +63,14 @@ class DetailFragment : Fragment() {
     private fun fabFavoriteOnClick() {
         binding.fabAddFav.apply {
             setOnClickListener {
-                if (!isFavorite) {
+                isFavorite = if (!isFavorite) {
                     viewModel.insertFavorite(detailMovie)
                     setImageResource(R.drawable.baseline_favorite_24)
-                    isFavorite = true
+                    true
                 } else {
                     viewModel.deleteFavorite(detailMovie)
                     setImageResource(R.drawable.baseline_favorite_border_24)
-                    isFavorite = true
+                    true
                 }
             }
         }
