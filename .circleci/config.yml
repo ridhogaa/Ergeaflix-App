@@ -6,6 +6,7 @@ orbs:
 jobs:
   build:
     executor: android/android
+    working_directory: ~/Kampus Merdeka Bangkit smt 6/Submission-Expert/Movies App
     steps:
       - checkout
       - restore_cache:
