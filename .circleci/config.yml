@@ -1,13 +1,19 @@
 version: 2.1
 
 orbs:
-  android: circleci/android@2.3.0
+  android: circleci/android@0.2.1
 
 jobs:
   build:
     docker:
       - image: cimg/openjdk:17.0-node
     steps:
+      - run:
+          command: |
+            yes | sdkmanager --licenses
+            yes | sdkmanager --update
+          name: Accept Android Licenses
+          shell: /bin/bash -e
       - checkout
       - restore_cache:
           key: android-orb-v1-
