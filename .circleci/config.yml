@@ -8,12 +8,6 @@ jobs:
     docker:
       - image: cimg/openjdk:17.0-node
     steps:
-      - run:
-          command: |
-            yes | sdkmanager --licenses
-            yes | sdkmanager --update
-          name: Accept Android Licenses
-          shell: /bin/bash -e
       - checkout
       - restore_cache:
           key: android-orb-v1-
