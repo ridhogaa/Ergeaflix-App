@@ -5,7 +5,7 @@ orbs:
 
 parameters:
   java-version:
-    default: 8
+    default: 18
     description: |
       The version of OpenJDK to change to
     type: integer
@@ -46,8 +46,8 @@ jobs:
                         echo "New Java Version : $NEW_JAVA_VER"
                         echo "New Java Compiler Version : $NEW_JAVAC_VER"
           environment:
-                PARAM_JAVA_VER: << parameters.java-version >>
-          name: Change OpenJDK version to << parameters.java-version >>
+                PARAM_JAVA_VER: parameters.java-version
+          name: Change OpenJDK version to parameters.java-version
 
       - restore_cache:
           key: android-orb-v1-
