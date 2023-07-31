@@ -20,7 +20,6 @@ jobs:
           restore-gradle-cache-prefix: v1a
       - android/save-gradle-cache:
           cache-prefix: v1a
-      - checkout
       - restore_cache:
           key: android-orb-v1-
       - run:
