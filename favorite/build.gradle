@@ -29,12 +29,7 @@ android {
     buildFeatures {
         viewBinding = true
     }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles 'proguard-rules.pro'
-        }
-    }
+
 }
 
 dependencies {
