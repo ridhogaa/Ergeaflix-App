@@ -3,12 +3,6 @@ version: 2.1
 orbs:
   android: circleci/android@2.3.0
 
-parameters:
-  java-version:
-    default: 8
-    description: |
-      The version of OpenJDK to change to
-    type: integer
 
 jobs:
   test:
@@ -19,11 +13,17 @@ jobs:
     steps:
       - checkout
       - run:
-          command: |-
-                sudo apt-get update && sudo apt-get install openjdk-17-jdk
-                sudo update-alternatives --set java /usr/lib/jvm/java-17-openjdk-amd64/bin/java
-                sudo update-alternatives --set javac /usr/lib/jvm/java-17-openjdk-amd64/bin/javac
-                java -version
+            name: Install OpenJDK 17
+            command: |
+              wget https://download.java.net/java/GA/jdk17.0.2/205943a0976c4ed48cb16f1043c5c647/12/GPL/openjdk-17.0.2_linux-x64_bin.tar.gz
+              sudo tar -zxvf openjdk-17.0.2_linux-x64_bin.tar.gz -C /usr/lib/jvm
+              sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-17.0.2/bin/java 100
+              sudo update-alternatives --install /usr/bin/jar jar /usr/lib/jvm/jdk-17.0.2/bin/jar 100
+              sudo update-alternatives --install /usr/bin/javac javac /usr/lib/jvm/jdk-17.0.2/bin/javac 100
+              sudo update-alternatives --set java /usr/lib/jvm/jdk-17.0.2/bin/java
+              sudo update-alternatives --set jar /usr/lib/jvm/jdk-17.0.2/bin/jar
+              sudo update-alternatives --set javac /usr/lib/jvm/jdk-17.0.2/bin/javac
+              java -version
       - restore_cache:
           key: android-orb-v1-
       - run:
