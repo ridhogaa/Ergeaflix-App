@@ -3,27 +3,20 @@ version: 2.1
 orbs:
   android: circleci/android@2.3.0
 
-
 jobs:
   test:
-    executor:
-      name: android/android-machine
-      resource-class: large
-      tag: 2021.10.1
+    docker:
+      - image: cimg/openjdk:17.0-node
     steps:
       - checkout
-      - run:
-            name: Install OpenJDK 17
-            command: |
-              sudo apt-get update && sudo apt-get install openjdk-17-jdk
-              sudo update-alternatives --set java /usr/lib/jvm/java-17-openjdk-amd64/bin/java
-              sudo update-alternatives --set javac /usr/lib/jvm/java-17-openjdk-amd64/bin/javac
-              java -version
       - restore_cache:
           key: android-orb-v1-
       - run:
           name: Chmod permissions
           command: sudo chmod +x ./gradlew
+      - run:
+          name: Create Local Properties
+          command: echo "sdk.dir=$ANDROID_HOME" > local.properties
       - run:
           name: Download Dependencies
           command: ./gradlew androidDependencies
