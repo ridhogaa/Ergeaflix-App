@@ -10,8 +10,8 @@ commands:
         steps:
             - run:
                 command: |
-                    yes | sdkmanager --licenses
-                    yes | sdkmanager --update
+                    yes | sdkmanager.bat --licenses
+                    yes | sdkmanager.bat --update
                 name: Accept Android Licenses
                 shell: /bin/bash -e
 
