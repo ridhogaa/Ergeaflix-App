@@ -3,6 +3,18 @@ version: 2.1
 orbs:
   android: circleci/android@2.3.0
 
+commands:
+    accept-licenses:
+        description: |
+            Accept all Android SDK Manager licenses
+        steps:
+            - run:
+                command: |
+                    yes | sdkmanager --licenses
+                    yes | sdkmanager --update
+                name: Accept Android Licenses
+                shell: /bin/bash -e
+
 jobs:
   test:
     docker:
@@ -25,12 +37,7 @@ jobs:
           paths:
             - ~/.android/build-cache
             - ~/.android/cache
-      - run:
-          command: |
-            yes | sdkmanager --licenses
-            yes | sdkmanager --update
-          name: Accept Android Licenses
-          shell: /bin/bash -e
+      
       - run:
           name: Run Build
           command: ./gradlew build
