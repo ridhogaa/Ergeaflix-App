@@ -6,7 +6,7 @@ orbs:
 jobs:
   test:
     docker:
-      - image: cimg/openjdk:17.0-node
+      - image: cimg/openjdk:18.0-node
     steps:
       - checkout
       - restore_cache:
@@ -25,6 +25,12 @@ jobs:
           paths:
             - ~/.android/build-cache
             - ~/.android/cache
+      - run:
+          command: |
+            yes | sdkmanager --licenses
+            yes | sdkmanager --update
+          name: Accept Android Licenses
+          shell: /bin/bash -e
       - run:
           name: Run Build
           command: ./gradlew build
