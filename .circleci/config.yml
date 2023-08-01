@@ -10,12 +10,12 @@ jobs:
       - image: cimg/openjdk:18.0-node
     steps:
       - checkout
-      - run:
-          command: |
-              yes | sdkmanager.bat --licenses
-              yes | sdkmanager.bat --update 
-          name: Accept Android Licenses
-          shell: /bin/bash -e
+      # - run:
+      #     command: |
+      #         yes | sdkmanager.bat --licenses
+      #         yes | sdkmanager.bat --update 
+      #     name: Accept Android Licenses
+      #     shell: /bin/bash -e
       - restore_cache:
           key: android-orb-v1-
       - run:
